@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        //    var i = 5;
+
+        //         function fn(i) {
+        //             return function (n) {
+        //                 console.log(n + (++i));//
+        //             }
+        //         }
+        //         var f = fn(1);
+        //         f(2);//
+        //         fn(3)(4);
+        //         fn(5)(6);
+        //         f(7);
+        //         console.log(i);//5
+        // function fn(n) {//8
+        //             return function (m) {
+        //                 console.log(m + (n++)) 
+        //             }
+        //         }
+        //         var f = fn(7);
+
+        //         f(5);//12
+        //         f(6);//14
+        //         fn(1)(2);//3
+        //         fn(3)(4);//7
+        // var num = 1;
+        // var obj = {
+        //     num: 10,
+        //     fn: (function (num) {//3 4 5
+        //         var num = 2;
+        //         return function (n) {
+        //         console.log(n * (num++));
+        //         }
+        //     })(num)
+        // }
+        // var f = obj.fn;
+        // console.log(f === obj.fn)
+        // f(10);//20
+        // f(20);//60
+        // obj.fn(30);//120
+        // obj.fn(40);//200
+        // var a = 9;//1  2
+        // function fn() {
+        //     a = 0;//1  2
+        //     return function (b) {
+        //         return b + a++;
+        //     }
+        // }
+        // var f = fn();
+        // var m = f(5);
+        // alert(m);//5
+        // var n = fn()(5);
+        // alert(n);//5
+        // var x = f(5);
+        // alert(x);//6
+        // alert(a);//2
+
+
+        // var num=100;
+        // var obj = {
+        //     num: 2,
+        //     fn: function () {
+        //         var num = 1;
+        //         console.log(this);//obj
+        //         (function (num) {
+        //             console.log(this.num + num);//102
+        //         })(this.num)
+        //     }
+        // }
+        // obj.fn();
+        // var f = obj.fn;
+        // f()//200
+
+        // var num = 1;
+        // var obj = {
+        //     num: 0,
+        //     fn: function () {
+        //         num = 6;
+        //         (function (num) {
+        //             ++this.num;
+        //             num++;
+        //             console.log(num)//1
+        //         })(this.num) 
+        //     }
+        // }
+        // obj.fn(); 
+        // console.log(window.num, obj.num);//7 0
+        var num = 10;
+    var obj = {num: 15};
+    obj.fn = (function (num) {
+        this.num += 10;
+        num *= 2;//20
+        return function (n) {
+            this.num += n;
+            console.log(n + (--num));
+        }
+    })(obj.num);
+    var fn = obj.fn;
+    fn(10);//29
+    obj.fn(15);//
+    console.log(window.num, obj.num);
+    </script>
+</body>
+
+</html>

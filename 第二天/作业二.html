@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+// 第一周第一天作业(如果作业里边有报错，请忽略，继续往下做)
+
+// 1、
+
+    var ary = [12, 23];
+    function fn(ary) {
+        console.log(ary);//[12,23]
+        ary[0] = 100;//[100,23]
+        ary = [100];//新键一个堆内存
+        ary[0] = 0;//修改新的堆内存
+        console.log(ary);//[0]
+    }
+    fn(ary);
+    console.log(ary);//[100,23]
+
+
+// - 2、
+
+    console.log(a)//un
+    if(!('a' in window)){
+        var a = 13
+    }
+    console.log(a)//un
+
+ //3、(较难)
+
+    var s = 5;
+    function fn() {
+        var n = 0;
+        function f() {
+            n++;
+            console.log(n);//1
+        }
+        f();//
+        return f;
+    }
+    var r = fn();
+    r();
+    console.log(s);//5
+
+
+ //4、
+
+    var a = 4;
+    var f = 3;
+    function b(x,y,a) {
+        alert(a);//3
+        // 形参和arguments存在映射关系；
+        arguments[2]=10;
+        alert(a);//10
+    }
+    a=b(1,2,f);//un
+    alert(a);//un
+    console.log(f);//3
+
+
+
+ // 6、
+
+    var foo='hello';
+    (function(foo){
+        console.log(foo);//'hello'
+        var foo=foo||'world'; 
+        console.log(foo);//hello
+    })(foo);
+    console.log(foo);//'hello'
+
+
+ // 7、
+
+    f = function(){return true};
+    g = function(){return false};
+    ~function(){
+        if(g() && [] == ![]){
+            f = function(){return false};
+            function g(){return true};
+        }
+    }();
+    console.log(f());//true
+    console.log(g());//false
+
+// 8、
+
+    console.log(a)//un
+    var a = 12,
+        b = 12;
+    function fn() {
+        console.log(a, b);//(12,12) ?un,12
+        var a = b = 13;
+        console.log(a, b);//13,13
+    }
+    fn();
+    console.log(a, b);//12,12 ?12,13
+
+ // 9、
+
+
+console.log(a);//13
+    a=12;
+	function fn(){
+		console.log(a);//12
+		a=13;	
+	}
+	fn();
+	console.log(a);//un
+
+
+    </script>
+</body>
+</html>
