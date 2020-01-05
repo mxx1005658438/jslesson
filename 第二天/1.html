@@ -30,7 +30,6 @@
         //             }
         //         }
         //         var f = fn(7);
-
         //         f(5);//12
         //         f(6);//14
         //         fn(1)(2);//3
@@ -97,20 +96,7 @@
         // }
         // obj.fn(); 
         // console.log(window.num, obj.num);//7 0
-        var num = 10;
-    var obj = {num: 15};
-    obj.fn = (function (num) {
-        this.num += 10;
-        num *= 2;//20
-        return function (n) {
-            this.num += n;
-            console.log(n + (--num));
-        }
-    })(obj.num);
-    var fn = obj.fn;
-    fn(10);//29
-    obj.fn(15);//
-    console.log(window.num, obj.num);
+       
     </script>
 </body>
 
