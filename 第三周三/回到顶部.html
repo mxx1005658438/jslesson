@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    #goBack{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: orangered;
+            color: white;
+            font-size: 20px;
+            line-height: 200px;
+            text-align: center;
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            cursor:pointer;
+            opacity: 0;
+    }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <img src="./1 (1).png" alt="">
+    <img src="./1 (1).png" alt="">
+    <img src="./1 (1).png" alt="">
+    <img src="./1 (1).png" alt="">
+    <div id="goBack">回到顶部</div>
+    <script src="./utils.js"></script>
+    <script>
+    let goBack=document.getElementById('goBack');
+    goBack.onclick=function(){
+       // utils.win('scrollTop',0)
+       //把浏览器滚动条卷去的高度平均分为x份，定时器每执行一次，高度就累减1/X，直到减到0为止，清空定时器（X*定时器间隔的时间就是最后总运行的时间）
+       let winT=utils.win('scrllTop');
+       let cur=winT/100;
+       var timer=setInterval(()=>{
+        winT-=cur;
+        if(winT<=0){
+            clearInterval(timer)
+        }
+        utils.win('scrollTop',winT)
+       },20)
+    }
+    
+    let windH=utils.win('clientHeight');
+    window.onscroll=function(){
+        //当前窗口的滚动条一旦滑动，此事件就会被触发
+        /*
+        当浏览器滚动条卷去的高度大于当前一屏的高度时，回到顶部就该显示了
+        */
+       let windT=utils.win('scrollTop')
+        console.log(windH,windT)
+        if(windT>windH){
+            utils.css(goBack,'opacity',1)
+        }else{
+            utils.css(goBack,'opacity',0)
+        }
+    }
+    </script>
+</body>
+</html>

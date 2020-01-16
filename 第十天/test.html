@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+let data=null;
+let cardBox=document.getElementById('cardBox');
+let navList=document.getElementsByTagName('a');
+let xhr=new XMLHttpRequest;
+xhr.open('get','./json/product.json',false)
+xhr.onreadystatechange=function (){
+    if(xhr.status===200&&xhr.readyState===4){
+        data=xhr.responseText;
+    }
+}
+xhr.send();
+data=JSON.parse(data)
+
+renderHtml();
+function renderHtml(){
+    let htmlStr=``;
+    data.forEach((item)=>{
+        htmlSrt+=`
+        <li
+        data-time"${item.time}"data-hot"${item.hot}"data-price"${item.price}"
+        >
+        <img scr="${item.img}"alt="">
+        <span>${item.title}</span>
+        <span>${item.title}</span>
+        <span>${item.title}</span>
+        <span>${item.title}</span>
+        </li>
+        `
+    })
+    cardBox.innerHtml=htmlStr;
+};
+let cardList=document.getElementsByTagName('li');
+cardList=utils.toArray(cardList);
+for(var i=0;i<navList.length;i++){
+    navList[i].index=i;
+    this.flag*=-1;
+    navList[i].onclick=function(){
+        sort.call(this);
+        clearArrow.call(this);
+        addArrow.call(this);
+    }
+}
+function sortList(){
+    this.falg*=-1;
+    let dataAry=['data-time','data-hot','data-price'];
+    cardList.sort((a,b)=>{
+        a=a.getAttribute(dataAry[this.index]);
+        b=b.getAttribute(dataAry[this.index])
+        if(this.index===0){
+            a=a.replace(/-/g,'');
+            b=b.replace(/-/g,'');
+            return a-b
+        this.flag*=-1;
+        }
+    })
+    for (var i = 0; i < cardList.length; i++) {
+       cardBox.appendChild(cardList[i])
+    }
+}
+function addArrow(){
+    let up = this.children[0];
+    let down = this.children[1];
+    // 如果当前元素的flag大于0，那就是升序，反之就是降序
+    if(this.flag>0){
+        up.classList.add('bg');
+        down.classList.remove('bg')
+    }
+    else {
+        down.classList.add('bg');
+        up.classList.remove('bg')
+    }
+}
+function clearArrow(){
+    for (var i = 0; i < navList.length; i++) {
+        if(this!==navList[i]){
+        navList[i].children[0].classList.remove('bg');
+        navList[i].children[1].classList.remove('bg');
+        navList[i].flag=-1;
+    }
+}
+}
+</script>

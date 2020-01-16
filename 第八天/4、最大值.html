@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    let ary=[12,34,5,55,6,88888888]
+    //1、利用Math.max
+   // console.log(Math.max(...ary))
+   //2、利用apply
+   //console.log(Math.max.apply(null,ary))
+   //3、利用排序
+   //ary.sort((a,b)=>a-b);
+   //console.log(ary[ary.length-1]);
+   //4、利用前后两项两两比较
+   for(var i=0;i<ary.length-1;i++){
+     //如果前一项大于后一项，就两两交换位置  
+       if(ary[i]>ary[i+1]){
+           let temp=ary[i];
+           ary[i]=ary[i+1];
+           ary[i+1]=temp
+       }
+   }
+   console.log(ary[ary.length-1])
+    </script>
+</body>
+</html>

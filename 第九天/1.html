@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+   
+      
+    var name = 'haha';
+        function A(){
+            console.log('A',this.name);
+        }
+        function B(){
+            console.log('B',this.name);
+        }
+        B.call(A,300); //'B','A'
+        B.call.call.call(A); //'A'haha
+        Function.prototype.call(A); // 
+        Function.prototype.call.call.call(A) 
+  
+    
+        </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*
+    需求：取一组数的平均分
+    1、去掉最大值，去掉最小值
+    2、去平均值，而且保留两位小数
+    */
+    let ary=utils.toArray(arguments)
+    function fn(ary){
+        ary.sort((a,b)=>b-a);
+        ary.pop();
+        ary.shift();
+        let total=null;
+        for(var i=0;i<ary.length;i++){
+            total+=ary[i];
+        }
+        total=(total/ary.length).toFixed(2);
+        return total
+    }
+    console.log(ary)
+    </script>
+</body>
+</html>

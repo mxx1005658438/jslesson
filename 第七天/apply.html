@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //apply:他也是改变this指向的，和call一样，只不过他的第二个参数必须传数组或者类数组
+       function fn(m,n){
+       console.log(this, m,n)
+        }
+       let obj = {name:1};
+       fn.apply(obj,[1,2]);
+    //bind:bind和call一样也是改变this指向，但是他是预处理this,并不会让fn执行，bind的返回值是一个改变this之后的函数
+     // function fn(){
+    //     console.log(this)
+    // }
+    // let obj = {name:1};
+    // fn = fn.bind(obj);
+    // fn()
+
+    function fn(){
+            console.log(this)
+        }
+    btn.onclick = fn.bind(window)
+    </script>
+</body>
+</html>

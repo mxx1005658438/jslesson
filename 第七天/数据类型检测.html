@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+    利用constructor实现数据类型检测
+    判断当前实例的constructor属性值是不是你预估的类 但是他也有局限性：
+    1、不能够给当前类的原型进行重定向，这样就造成数据类型检测不准  
+    2、不能给当前实例增加私有属性constructor，这样也会造成检测的结果不准  
+        
+        */
+   //数据类型检测
+   /*
+   1、typeof
+   2、instanceof
+   3、constructor
+   4、object.prototype.toString.call()
+
+   1、typeof ：typeof 实例
+      1、返回一个字符串，里边存储的是当前实例的数据类型
+      2、不能区分null、普通对象、数组
+  2、 instanceof： 实例  instanceof  类
+      1、如果当前实例属于这个类，返回true，反之返回false
+      2、不能检测基本值
+      3、只要当前类的原型出现在当前实例的原型链上，就返回true
+  3、  constructor
+      1、实例.constructor===类
+      2、如果相等，证明当前实例属于这个类
+      3、不能够重定向当前类的原型
+      4、不能够给当前实例增加私有属性constructor
+   4、object.prototype.toString.call()（实例）  
+    1、'[Object 被检测的值]' 
+    2、不能够检测自定义类创建的实例的数据类型
+   */    
+    function Fn (){
+
+    }
+    let f1=new Fn();
+    console.log(f1.constructor===Fn)//true
+    </script>
+</body>
+</html>

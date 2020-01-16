@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" style="background-color:red;">111</div>
+</body>
+    <script>
+        let box = document.getElementById('box');
+        function  setGroupCss(curEle,obj){
+            for(var key in obj){
+                setCss(curEle,key,obj[key])
+            }
+        }
+        setGroupCss(box,{width:600,height:600,backgroundColor:'orange'})
+
+         // box.style.width = '300px'
+        // setCss(box,'width',1000);
+        // setCss(box,'height','800px');
+        // setCss(box,'opacity',0.1);
+
+        // setGroupCss(box,{width:800,heigth:800,background:'orange'})
+        // css
+        // box.style.opacity = 1
+    </script>
+</html>

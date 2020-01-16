@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     /* 
+        字符串的时间格式化
+        let time = '2020-1-14 16:55:6';
+        将其转化为 '2020年01月14日 16时55分06秒'
+                   '2020~01 16-55'
+        */
+        let time = '2020-1-14 16:55:8';
+        String.prototype.formatTime = function formatTime(template = '{0}年{1}月{2}日 {3}时{4}分{5}秒') {
+            // let reg= /\d+/g;
+            let timeAry = this.match(/\d+/g);
+            // ["2020", "1", "14", "16", "55"]
+            // let template = '?年?月?日 ?时?分?秒';
+            // let template = '{0}年{1}月{2}日 {3}时{4}分{5}秒';
+
+            // template='{0}~{1} {3}-{4}'
+            template = template.replace(/\{(\d)\}/g, function () {
+                let [, index] = arguments;
+                let time = timeAry[index] || '00'; // '2020'
+                // console.log(time)
+                time = time.length < 2 ? '0' + time : time;
+                return time
+            })
+            return template
+
+        }
+        console.log(time.formatTime('{0}y{1}m {3}h{4}m{5}s'))
+        '2020~01 16-55'
+    </script>
+</body>
+</html>

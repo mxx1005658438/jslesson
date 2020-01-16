@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         /* 
+        正则匹配的应用：
+        1、匹配有效数字
+        2、密码
+        3、匹配名字
+        4、匹配身份证号码
+        */  
+
+        /* 
+        匹配有效数字
+        2 2.5 -2.5 +2.5 0 2.4
+        1、+-可有可无，而且在开头， [+-]?
+        2、有可能是一位数，也有可能是多位数   \d   [1-9]\d+
+        3、小数     (\.\d+)?
+
+        */
+      let reg = /^[+-]?(\d|[1-9]\d+)(\.\d+)?$/;
+       console.log(reg.test('3.5'));
+       console.log(reg.test('+3.5'));
+       console.log(reg.test('-3.5'));
+       console.log(reg.test('3'));
+       console.log(reg.test('353'));
+       console.log(reg.test('3.5.2'));
+       console.log(reg.test('3.5.')); 
+     
+ /* 
+        宋小宝
+        爱新觉罗·溥仪
+        阿诺德·施瓦辛格·溥仪
+        */
+        let reg = /^[\u4E00-\u9FA5]{2,6}(·[\u4E00-\u9FA5]{1,6}){0,2}$/;
+       console.log(reg.test('爱新觉罗·溥仪')) // true
+       console.log(reg.test('阿诺德·施瓦辛格·溥仪')) // true
+       console.log(reg.test('阿·施瓦辛格·溥仪')) // false
+     
+
+       // 身份证
+       let reg = /^\d{17}(\d|X)$/
+            let reg1 = /^(\d{6})(\d{8})\d{2}(\d)(?:\d|X)$/;
+            console.log(reg1.test('13098119880215391X'))
+            console.log(reg1.exec('13098119880215391X'))
+     // 密码：
+            // let reg = /^\w{6,16}$/
+        // 邮箱：
+            // 112344@qq.com
+        // let reg = /^[a-zA-Z0-9_-]+@[a-z]+(\.[a-z]){1,2}$/
+    </script>
+
+</body>
+</html>

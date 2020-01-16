@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*
+    正则的使用：
+    test:检测当前字符串是否可以用此正则匹配到，如果匹配到返回true，反之返回false
+    */
+    //1、^ $
+     // let reg = /18$/;
+        // console.log(reg.test('189')) // false
+        // console.log(reg.test('198')) // false
+        // console.log(reg.test('218918')) // true
+
+        // let reg = /^18$/;
+        // console.log(reg.test('189')) // false
+        // console.log(reg.test('198')) // false
+        // console.log(reg.test('218918')) // false
+        // console.log(reg.test('18e18')) // false
+        // console.log(reg.test('18')) // true
+      // 2、\：转义字符
+        // let reg = /^2.3$/;
+        // console.log(reg.test('2.3')) // true
+        // console.log(reg.test('2e3')) // true
+        // console.log(reg.test('2@3')) // true
+
+        // let reg = /^2\.3$/;
+        // console.log(reg.test('2.3')) // true
+        // console.log(reg.test('2e3')) // false
+        // console.log(reg.test('2@3')) // false
+
+        // let str = '中\\国'; // 转义字符在字符串里也适用
+        // console.log(str)  // '中\国'
+
+        // let reg = /^\\d$/;
+        // console.log(reg.test('\\d')) // true
+
+
+               /* 
+        匹配手机号：
+            1、11位数字
+            2、以数字1开头
+            2、第二位是3到9
+        */
+    //     let reg = /^1[3-9]{1}\d{9}$/;
+    //    console.log(reg.test('15231105887'));
+    //    console.log(reg.test('1523110588'));
+    //    console.log(reg.test('12231105887'));
+    //    console.log(reg.test('152311058871'));
+//():分组
+//1、提高匹配的优先级
+//2、分组引用
+//3、分组捕获：先捕获最大的内容，按照分组在依次进行捕获
+// let str='abab' ;
+// let str=/^1([a-z])([a-z])\1\2$/
+// let str=foood;
+// let str=/^[a-z]([a-z])\1\1[a-z]$/
+//[]中不允许出现多位数
+    // let reg = /^[21-68]$/; // 2  1-6 8之间取一个数
+    // console.log(reg.test('21')); // false
+    // console.log(reg.test('68')); // false
+    // console.log(reg.test('2')); // true
+    // console.log(reg.test('5')); // true
+    // console.log(reg.test('8')); // true
+
+        /* 
+        密码：
+        1、6到18位
+        2、数字、字母、下划线
+        */
+        // let reg = /^\w{6,18}$/;
+        // function fn(str) {
+        //     if (str.length < 6 || str.length > 18) {
+        //         alert('密码不符合要求');
+        //         return
+        //     }
+        //     let ary = ['0', '1', 'a', '_', '...'];
+        //     for (var i = 0; i < str.length; i++) {
+        //         if (ary.includes(str[i])) {
+        //             alert('密码不符合要求')
+        //             return
+        //         }
+        //     }
+        // }
+    
+    </script>
+</body>
+</html>

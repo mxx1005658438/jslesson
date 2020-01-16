@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding:0;
+            margin:0;
+        }
+        #box {
+            width: 400px;
+            height: 200px;
+            margin: 800px auto;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <img src="./img/default.jpg" true-img = './img/1.jpg' alt="">
+    </div>
+    <script src="./utils.js"></script>
+    <script>
+        let img = document.getElementsByTagName('img')[0];
+        let imgT = utils.offset(img).top; // 获取图片距离body的上偏移量
+        let imgH = img.offsetHeight; // 获取图片自身的总高度
+        let winH = utils.win('clientHeight');// 当前浏览器可视窗口的高度
+        /* 
+        图片加载的临界条件：
+        图片的底边 === 当前浏览器可视窗口的底边
+
+        当前图片距离body的上偏移量 + 图片自身的总高度 === 当前浏览器滚动条卷去的高度+但前浏览器可视窗口的高度
+        */
+
+        function dealy(){
+            let winT = utils.win('scrollTop');
+            // console.log(imgT,imgH,winH,winT)
+            // 如果浏览器的滚动条卷去的高度+浏览器可视窗口的>图片自身高度+图片距离body的上偏移量，就该让图片显示了
+            if(imgT+imgH<winH+winT){
+                let address = img.getAttribute('true-img'); // 从img行内拿到图片真实的路径
+                img.src = address; // 把图片真实的路径赋给src属性
+            }
+        }
+       
+       window.onscroll = function(){
+        dealy()
+       }
+    </script>
+</body>
+</html>

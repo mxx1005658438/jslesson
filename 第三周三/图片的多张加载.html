@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    #box{
+        width: 400px;
+        margin: 200px auto;
+
+    }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <img src="./img/default.jpg" true-img='./img/1.jpg' alt="">
+    </div>
+    <script src="./utils.js"></script>
+    <script>    
+    /*
+    图片加载的临界条件：
+
+    */
+   let img=document.getElementsByTagName('img')[0];
+   let imgT=utils.offset(img).top;
+   let imgH=img.offsetHeight;
+   let winH=utils.win('clientHeight');
+   window.onscroll=function(){
+       let winT=utils.win('scrollTop');
+   }
+    </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+   //1、你是如何理解作用域链与原型链的？（腾讯二面）
+   /*
+   作用域链：在私有作用域里使用一个变量，先看自己有没有，如果自己有就用自己的，如果没有就往上一级作用域查找，如果还没有就往上一级的上一级查找，直到找到全局作用域为止，如果还没有就报错
+   ==========================================
+   原型链：在对象里查找一个属性，先看自己私有的有没有，如果有就直接用，如果没有就通过__proto__属性查找当前所属类的原型，原型上有，就使用，如果原型上也没有，就通过原型是__proto__找到原型所属类的原型，直到找到object的原型为止，如果还没有就是undefined
+   */
+   // 2、实现数组去重你有哪些办法？（腾讯一面）
+   //1、用indexOf方法去重
+    let ary=[1,2,3,1,2,3];
+//    function unique(ary){
+//    let newAry=[];
+//    for(var i=0;i<ary.length;i++){
+//        if(newAry.indexOf(ary[i])===-1){
+//            newAry.push(ary[i])
+//        }
+//    }
+//    return newAry
+// }
+// console.log(unique(ary))
+//2、
+// var arr=new Set(ary);
+// console.log([...arr]);
+//3、把数组的每一项和后边的值一一做比较
+// function unique(ary){
+//     for(var i=0;i<ary.length-1;i++){
+//          var cur=ary[i]
+//          for(var j=i+1;j<ary.length;j++){
+//              var next=ary[j];
+//              if(cur===next){
+//                  ary.splice(j,1);
+//                  j--;
+//              }
+//          }
+//     }
+//     return ary
+// }
+// console.log(unique(ary))
+//4、创建一个空对象，循环数组，把数组存储到对象中，之后循环数组，增加到新数组中
+    //  function unique(ary){
+    //      var obj={};
+    // for(var i=0;i<ary.length;i++){
+    //     var cur=ary[i];
+    //     obj[cur]=cur;
+    // }
+    // var newAry=[];
+    // for(var j in obj){
+    //     newAry.push(obj[j]);
+    // }
+    // return newAry;
+    //  }
+    //  let newAry=unique(ary)
+    //  console.log(newAry);
+//5、利用对象的属性名如果不存在，那属性值就是undefined
+    function unique(ary){
+        let obj={};
+        for(var i=0;i<ary.length;i++){
+          if(obj[ary[i]]!==undefined)
+          ary.splice(i,1);
+          i--;
+          ary[i]=ary[ary.length-1];
+          ary.length--;
+          i--;
+        }
+        else {
+             obj[ary[i]] = ary[i]
+            obj [1] = 1
+                }
+            }
+            return ary
+        }
+        
+//3、hasPubProperty来检测当前属性是否是对象的公有属性
+  Object.prototype.hasOwnProperty=function(value){
+      //检测属性名的格式是否正确
+      let ary=['number','string'];
+      //includes检测当前值在数组中有没有，如果有返回true,没有返回false
+      if(!ary.includes(typeof value)){
+          return false
+      }
+  }
+
+
+   </script> 
+</body>
+</html>
